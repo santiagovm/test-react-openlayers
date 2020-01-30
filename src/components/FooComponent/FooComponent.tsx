@@ -1,10 +1,10 @@
 import React from 'react'
 import TileLayer from 'ol/layer/Tile'
-import OSM from 'ol/source/OSM'
-import {fromLonLat} from 'ol/proj'
-import View from 'ol/View'
 import Map from 'ol/Map'
 import 'ol/ol.css'
+import {fromLonLat} from 'ol/proj'
+import OSM from 'ol/source/OSM'
+import View from 'ol/View'
 
 export interface FooProps {
   message: string
@@ -18,9 +18,20 @@ export default class FooComponent extends React.PureComponent<FooProps, FooState
 
   private readonly mapContainerRef: React.RefObject<HTMLDivElement>;
 
+  public map: Map | null;
+
   constructor(props: FooProps) {
     super(props);
     this.mapContainerRef = React.createRef()
+    this.map = null;
+  }
+
+  getMap(): Map {
+    if (this.map) {
+      return this.map;
+    }
+
+    throw new Error('map undefined')
   }
 
   componentDidMount(): void {
@@ -35,12 +46,12 @@ export default class FooComponent extends React.PureComponent<FooProps, FooState
       zoom: 6,
     })
 
-    const map = new Map({
+    this.map = new Map({
       target: this.mapContainerRef.current as HTMLElement,
     })
 
-    map.addLayer(osmLayer)
-    map.setView(view)
+    this.map.addLayer(osmLayer)
+    this.map.setView(view)
   }
 
   public render(): React.ReactNode {

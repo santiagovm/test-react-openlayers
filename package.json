@@ -20,7 +20,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test-electron": "react-scripts test --runner 'jest-electron/runner' --testEnvironment 'jest-electron/environment' --transformIgnorePatterns 'node_modules/(?!(ol)/)'",
+    "test-transpile": "react-scripts test --transformIgnorePatterns 'node_modules/(?!(ol)/)'",
+    "test-electron": "react-scripts test --transformIgnorePatterns 'node_modules/(?!(ol)/)' --runner 'jest-electron/runner' --testEnvironment 'jest-electron/environment'",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
