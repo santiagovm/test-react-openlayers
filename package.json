@@ -16,12 +16,22 @@
     "react-scripts": "3.3.0",
     "typescript": "~3.7.2"
   },
+  "peerDependencies": {
+    "jest": "^24.0.0"
+  },
+  "devDependencies": {
+    "@types/enzyme": "^3.10.4",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/ol": "^6.1.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "jest-electron": "^0.1.11"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test-transpile": "react-scripts test --transformIgnorePatterns 'node_modules/(?!(ol)/)'",
-    "test-electron": "react-scripts test --transformIgnorePatterns 'node_modules/(?!(ol)/)' --runner 'jest-electron/runner' --testEnvironment 'jest-electron/environment'",
+    "test-electron": "react-scripts test --runner 'jest-electron/runner' --testEnvironment 'jest-electron/environment'",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -39,11 +49,9 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "@types/enzyme": "^3.10.4",
-    "@types/ol": "^6.1.0",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.2",
-    "jest-electron": "^0.1.11"
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!(ol)/)"
+    ]
   }
 }
